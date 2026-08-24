@@ -1,0 +1,188 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top",
+    "position": "top",
+    "height": 36,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "spacing": 10,
+
+
+    "modules-left": [
+        "clock",
+        "niri/workspaces",
+        "niri/window"
+    ],
+
+
+    "modules-right": [
+        "mpris",
+        "group/hardware",
+        "group/audio-media",
+	    "group/networkblue",
+        "group/statictype",
+        "group/powermenu"
+    ],
+
+
+
+
+/* ==========================================================================
+   左侧配置 窗口+工作区+时间
+   ========================================================================== */
+    
+
+    "niri/window": { "format": "{title}","max-length": 30},
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": { "active": "●", "default": "○" }
+    },
+    "clock": { "format": " {:%H:%M  •  %m月%d日} ","tooltip-format": "<tt>{calendar}</tt>"},
+
+
+/* ==========================================================================
+   右侧配置 硬件组+系统状态组+网络组+静态显示组+电源组
+   ========================================================================== */
+
+
+    // "mpris": {
+    //     "format": "{player_icon} {dynamic}",
+    //     "format-paused": "{status_icon} <i>{dynamic}</i>",
+    //     "dynamic-len":30,
+    //     "interval":1,
+    //     "player-icons": {
+    //         "default": "▶",
+    //         "mpv": "🎵"
+    //     },
+    //     "status-icons": {
+    //         "paused": "⏸"
+    //     }
+    //     // "ignored-players": ["firefox"]
+    // },
+
+    "mpris": {
+        "format": "{status_icon} {title}",
+        "format-paused": "{status_icon} {title}",
+        "title-len": 40,
+        "status-icons": {
+            "playing": "",
+            "paused": "",
+            "stopped": ""
+        },
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl next",
+        "tooltip-format": "{title}"
+    },
+
+
+    //硬件占用组定义
+    "group/hardware": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "not-power",
+            "transition-left-to-right": false 
+        },
+        "modules": ["cpu", "memory", "temperature"]
+    },
+
+
+    "cpu": { "format": "  {usage}%" },
+    "memory": { "format": "  {}%" },
+    "temperature": { "format": " {temperatureC}°C" },
+
+
+
+    //系统状态组定义
+    "group/audio-media": {
+        "orientation": "horizontal",
+        "modules": ["pulseaudio", "backlight", "idle_inhibitor"]
+    },
+
+    "pulseaudio": { "format": "{icon} {volume}%", "format-icons": { "default": ["", "", ""] }, "on-click": "pavucontrol --tab=3" },
+    "backlight": { "format": " {percent}%" },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": " ",   
+            "deactivated": " " 
+        }
+    },
+
+
+
+    //网络组定义
+    "group/networkblue": {
+	    "orientation": "horizontal",
+	    "modules": ["network", "bluetooth"]
+    },
+
+
+    "network": { "format-wifi": "  {essid}", "format-disconnected": "⚠", "tooltip-format": "{essid} ({signalStrength})" },
+    "bluetooth": {
+        "format": " {status}",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+        "format-disabled": "󰂲",
+        "format-connected": " {device_alias}",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\t{device_alias}"
+    },
+
+
+    //静态显示组定义
+    "group/statictype": {
+        "orientation": "horizontal",
+        "modules": ["battery", "tray"]
+    },
+
+
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-icons": [" ", " ", " ", " ", " "]
+    },
+    "tray": { "spacing": 8 },
+
+
+
+    //电源组定义
+    "group/powermenu": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "not-power",
+            "transition-left-to-right": false 
+        },
+        "modules": [
+            "custom/power",   
+            "custom/lock",    
+            "custom/reboot",  
+            "custom/shutdown" 
+        ]
+    },
+
+
+
+
+    "custom/power": {
+        "format": " 󰋣 ",
+        "tooltip": false
+    },
+    "custom/lock": {
+        "format": " 󰌾 ",
+        "tooltip": true,
+	    "tooltip-format": "锁屏",
+        "on-click": "swaylock"
+    },
+    "custom/reboot": {
+        "format": "  ",
+        "tooltip": true,
+	    "tooltip-format": "重启",
+        "on-click": "systemctl reboot"
+    },
+    "custom/shutdown": {
+        "format": " 󰐥 ",
+        "tooltip": true,
+	    "tooltip-format": "关机",
+        "on-click": "systemctl poweroff"
+    }
+}

@@ -1,0 +1,50 @@
+# ==========================================
+# Alacritty 基础配置文件 (TOML 格式)
+# ==========================================
+
+[general]
+# 开启配置自动重载（修改保存后无需重启终端，立即生效）
+live_config_reload = true
+
+[window]
+# 窗口初始大小（列数和行数，0 表示使用系统默认）
+dimensions = { columns = 100, lines = 30 }
+
+# 窗口内边距（让文字离边框有一点距离，更好看）
+padding = { x = 12, y = 12 }
+
+# 窗口透明度 (0.0 完全透明 ~ 1.0 完全不透明)
+opacity = 0.90
+
+blur = true
+
+# 窗口标题
+title = "Alacritty"
+
+
+[scrolling]
+# 滚动历史行数限制
+history = 10000
+
+[font]
+# 字体大小
+size = 16.0
+
+[font.normal]
+family = "Sarasa Mono SC"
+style = "Regular"
+
+[font.bold]
+family = "Sarasa Mono SC"
+style = "SemiBold"
+
+[font.italic]
+style = "Regular"
+
+[font.bold_italic]
+style = "SemiBold"
+
+[cursor]
+# 光标样式：Block (方块), Underline (下划线), Beam (竖线)
+style = { shape = "Beam", blinking = "On" }
+

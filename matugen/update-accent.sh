@@ -1,8 +1,10 @@
+
 #!/usr/bin/env bash
 set -euo pipefail
 
 css="$HOME/.config/matugen/generated/colors.css"
 mako_config="$HOME/.config/mako/config"
+niri_config="$HOME/.config/niri/config.kdl"
 
 get_color() {
     sed -n "s/^@define-color $1 #\\([[:xdigit:]]\\{6\\}\\);/\\1/p" "$css" | head -n1
@@ -11,13 +13,16 @@ get_color() {
 primary=$(get_color primary)
 surface_container=$(get_color surface_container)
 on_surface=$(get_color on_surface)
+outline=$(get_color outline)
+error=$(get_color error)
 
-if [[ ! "$primary" =~ ^[[:xdigit:]]{6}$ ||
-      ! "$surface_container" =~ ^[[:xdigit:]]{6}$ ||
-      ! "$on_surface" =~ ^[[:xdigit:]]{6}$ ]]; then
-    echo "无法读取 Matugen 颜色：$css" >&2
-    exit 1
-fi
+for color in primary surface_container on_surface outline error; do
+    value="${!color}"
+    if [[ ! "$value" =~ ^[[:xdigit:]]{6}$ ]]; then
+        echo "无法读取 Matugen 颜色 $color：$css" >&2
+        exit 1
+    fi
+done
 
 r=$((16#${primary:0:2}))
 g=$((16#${primary:2:2}))
@@ -52,10 +57,36 @@ if [[ -f "$mako_config" ]]; then
     makoctl reload
 fi
 
+# 更新 niri 焦点环和边框颜色
+if [[ -f "$niri_config" ]]; then
+    update_block_color() {
+        local block="$1"
+        local key="$2"
+        local color="$3"
+
+        sed -i \
+            "/^[[:space:]]*${block}[[:space:]]*{/,/^[[:space:]]*}/ s|^\\([[:space:]]*\\)${key}[[:space:]].*|\\1${key} \"#${color}\"|" \
+            "$niri_config"
+    }
+
+    update_block_color focus-ring active-color "$primary"
+    update_block_color focus-ring inactive-color "$outline"
+    update_block_color border active-color "$primary"
+    update_block_color border inactive-color "$outline"
+    update_block_color border urgent-color "$error"
+
+    # 重新加载 niri 配置
+    niri msg action load-config-file
+fi
+
 # 刷新 Waybar
 pkill -SIGUSR2 waybar 2>/dev/null || true
 
 echo "Matugen colors updated:"
 echo "Primary: #$primary"
+echo "Outline: #$outline"
+echo "Error: #$error"
 echo "Mako background: #$surface_container"
 echo "Portal accent: $accent"
+echo "Niri colors updated"
+

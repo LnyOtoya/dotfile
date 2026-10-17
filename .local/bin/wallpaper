@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -ne 1 || ! -f "$1" ]]; then
+    echo "用法: wallpaper 图片路径" >&2
+    exit 1
+fi
+
+matugen image "$1" --mode dark --source-color-index 0

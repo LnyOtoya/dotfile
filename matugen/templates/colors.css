@@ -1,0 +1,9 @@
+@define-color primary {{colors.primary.dark.hex}};
+@define-color secondary {{colors.secondary.dark.hex}};
+@define-color tertiary {{colors.tertiary.dark.hex}};
+@define-color error {{colors.error.dark.hex}};
+
+@define-color surface {{colors.surface.dark.hex}};
+@define-color on_surface {{colors.on_surface.dark.hex}};
+@define-color surface_container {{colors.surface_container.dark.hex}};
+@define-color outline {{colors.outline.dark.hex}};

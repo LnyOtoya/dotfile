@@ -1,0 +1,85 @@
+* {
+    font-family: "JetBrainsMono Nerd Font", "Inter", sans-serif;
+    font-size: 20px;
+    border: none;
+    border-radius: 0;
+    transition: none;
+}
+
+window#waybar {
+    background: #181818;
+    color: #eceff4;
+}
+
+window#waybar.empty #window {
+    /* padding: 0;
+    margin: 0;
+    border: none; */
+    background-color: transparent;
+
+}
+
+/* 模块容器 */
+.modules-left, .modules-right {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+/* 模块方块：强调边界感 */
+#window,
+#workspaces button,
+#clock,
+#mpris,
+#cpu, #memory, #temperature,
+#pulseaudio, #backlight, #idle_inhibitor,
+#network, #bluetooth,
+#battery, #tray,
+#custom-power, #custom-lock, #custom-reboot, #custom-shutdown {
+    padding: 0 12px;
+    margin: 0;
+    background: #252525; /* 模块背景 */
+    color: #a0a0a0;
+}
+
+/* 激活状态：使用底部装饰线*/
+#workspaces button.active {
+    background: #252525;
+    color: #ffffff;
+    border-bottom: 2px solid #88c0d0;
+}
+
+/* 悬停效果 */
+#workspaces button:hover,
+#custom-power:hover,
+#custom-lock:hover,
+#custom-reboot:hover,
+#custom-shutdown:hover {
+    background: #333333;
+    color: #ffffff;
+}
+
+/* 托盘与图标样式 */
+#tray {
+    padding: 0 8px;
+}
+
+/* 字体权重优化 */
+#clock {
+    font-weight: bold;
+    color: #d8dee9;
+}
+
+/* 模块颜色强调（极简风使用低饱和度颜色） */
+#cpu, #memory { color: #88c0d0; }
+#network { color: #81a1c1; }
+#battery.charging { color: #a3be8c; }
+#custom-shutdown { color: #bf616a; } /* 仅在电源模块使用少量强调色 */
+#mpris {color: #a0a0a0;}
+#mpris.playing {color: #88c0d0;}
+#mpris.paused {color: #a0a0a0;}
+#bluetooth {color: #a0a0a0;}
+#bluetooth.off {color: #666666;}
+#bluetooth.discovering {color: #ebcb8b;}
+#bluetooth.connected {color: #88c0d0;}
+

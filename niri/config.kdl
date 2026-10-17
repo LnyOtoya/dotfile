@@ -273,6 +273,8 @@ layout {
 spawn-at-startup "fcitx5"
 spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
 
+
+
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 

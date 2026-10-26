@@ -11,7 +11,7 @@
 
     "modules-left": [
         "clock",
-        "niri/workspaces",
+        //"niri/workspaces",
         "niri/window"
     ],
 

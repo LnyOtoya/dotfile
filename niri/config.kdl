@@ -167,13 +167,13 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#8cd5b5"
+        active-color "#ffb2b7"
 
         // Color of the ring on inactive monitors.
         //
         // The focus ring only draws around the active window, so the only place
         // where you can see its inactive-color is on other monitors.
-        inactive-color "#89938d"
+        inactive-color "#9f8c8d"
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -198,8 +198,8 @@ layout {
         off
 
         width 4
-        active-color "#8cd5b5"
-        inactive-color "#89938d"
+        active-color "#ffb2b7"
+        inactive-color "#9f8c8d"
 
         // Color of the border around windows that request your attention.
         urgent-color "#ffb4ab"
@@ -342,6 +342,18 @@ window-rule {
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
+}
+
+window-rule {
+    match app-id="helium"
+    open-maximized true
+}
+
+window-rule {
+    match app-id="Alacritty"
+    open-floating true
+    default-column-width { fixed 1400; }
+    default-window-height { fixed 900; }
 }
 
 // Example: block out two password managers from screen capture.

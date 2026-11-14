@@ -75,7 +75,7 @@ input {
 // Find more information on the wiki:
 // https://niri-wm.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-output "HDMI-A-1" {
+output "DP-2" {
     // Uncomment this line to disable this output.
     // off
 
@@ -167,13 +167,13 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#ffb2b7"
+        active-color "#a4c9fe"
 
         // Color of the ring on inactive monitors.
         //
         // The focus ring only draws around the active window, so the only place
         // where you can see its inactive-color is on other monitors.
-        inactive-color "#9f8c8d"
+        inactive-color "#8d9199"
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -198,8 +198,8 @@ layout {
         off
 
         width 4
-        active-color "#ffb2b7"
-        inactive-color "#9f8c8d"
+        active-color "#a4c9fe"
+        inactive-color "#8d9199"
 
         // Color of the border around windows that request your attention.
         urgent-color "#ffb4ab"
@@ -272,7 +272,7 @@ layout {
 
 spawn-at-startup "fcitx5"
 spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
-
+spawn-at-startup "/home/otoya/.local/bin/ramrgboff.sh"
 
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
@@ -347,6 +347,16 @@ window-rule {
 window-rule {
     match app-id="helium"
     open-maximized true
+}
+
+window-rule {
+    match app-id="com.otimeum.laetibeat"
+    open-maximized true
+}
+
+window-rule {
+    match app-id="scrcpy"
+    open-floating true
 }
 
 window-rule {

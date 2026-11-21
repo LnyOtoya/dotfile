@@ -1,0 +1,66 @@
+{
+  "layer": "top",
+  "position": "bottom",
+  "height": 38,
+  "margin": 0,
+  "spacing": 8,
+  "exclusive": true,
+  "reload_style_on_change": true,
+
+  "modules-left": ["custom/clipboard"],
+  "modules-center": [],
+  "modules-right": ["custom/volume", "network", "bluetooth", "tray", "custom/power"],
+
+  "custom/clipboard": {
+    "format": "CLIP",
+    "tooltip": "Clipboard history",
+    "on-click": "$HOME/.config/waybar/scripts/clipboard.sh"
+  },
+
+  "custom/volume": {
+    "exec": "$HOME/.config/waybar/scripts/volume.sh",
+    "return-type": "json",
+    "interval": 1,
+    "format": "{}",
+    "escape": false,
+    "tooltip": true,
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"
+  },
+
+  "network": {
+    "format-wifi": "WIFI · {essid}",
+    "format-ethernet": "ETH · CONNECTED",
+    "format-linked": "ETH · NO IP",
+    "format-disconnected": "NET · OFFLINE",
+    "tooltip-format-wifi": "{essid}\\nSignal: {signalStrength}%\\nIP: {ipaddr}",
+    "tooltip-format-ethernet": "{ifname}\\nIP: {ipaddr}",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 32,
+    "on-click": "kitty -e nmtui"
+  },
+
+  "bluetooth": {
+    "format-disabled": "BT OFF",
+    "format-off": "BT OFF",
+    "format-on": "BT ON",
+    "format-connected": "BT · {device_alias}",
+    "format-connected-battery": "BT · {device_alias} {device_battery_percentage}%",
+    "format-no-controller": "BT N/A",
+    "tooltip": true,
+    "tooltip-format": "{controller_alias}\\n{device_alias}",
+    "on-click": "blueman-manager"
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
+  },
+
+  "custom/power": {
+    "format": "PWR",
+    "tooltip": "Power menu",
+    "on-click": "$HOME/.config/waybar/scripts/power-menu.sh"
+  }
+}

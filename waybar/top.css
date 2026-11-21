@@ -1,0 +1,57 @@
+@import url("/home/otoya/.config/matugen/generated/colors.css");
+
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 18px;
+  font-weight: 400;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  text-shadow: none;
+  min-height: 0;
+}
+
+window#waybar {
+  background: @surface;
+  color: @on_surface;
+}
+
+#window {
+  padding: 0 12px;
+  color: @on_surface;
+}
+
+#window.empty {
+  background: transparent;
+}
+
+#mpris {
+  padding: 0 12px;
+  color: @primary;
+}
+
+#custom-recording {
+  padding: 0 10px;
+  color: @error;
+  font-weight: 700;
+}
+
+#clock {
+  padding: 0 12px;
+  color: @primary;
+}
+
+#clock.date {
+  color: @primary;
+  padding: 0 12px;
+}
+
+.modules-right > widget {
+  margin-left: 2px;
+}
+
+tooltip {
+  background: @surface_container;
+  color: @on_surface;
+  border: 1px solid @outline;
+}

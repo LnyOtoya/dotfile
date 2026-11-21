@@ -1,0 +1,56 @@
+@import url("/home/otoya/.config/matugen/generated/colors.css");
+
+* {
+  font-family: "JetBrainsMono Nerd Font", "Noto Sans Mono CJK SC";
+  font-size: 18px;
+  font-weight: 400;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  text-shadow: none;
+  min-height: 0;
+}
+
+window#waybar {
+  background: @surface;
+  color: @on_surface;
+}
+
+#custom-clipboard {
+  padding: 0 12px;
+  color: @primary;
+}
+
+#custom-volume {
+  padding: 0 12px;
+  color: @on_surface;
+}
+
+#network {
+  padding: 0 12px;
+  color: @on_surface;
+}
+
+#bluetooth {
+  padding: 0 12px;
+  color: @on_surface;
+}
+
+#tray {
+  padding: 0 10px;
+}
+
+#custom-power {
+  padding: 0 12px;
+  color: @error;
+}
+
+.modules-right > widget {
+  margin-left: 2px;
+}
+
+tooltip {
+  background: @surface_container;
+  color: @on_surface;
+  border: 1px solid @outline;
+}

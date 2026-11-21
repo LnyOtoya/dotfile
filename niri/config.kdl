@@ -111,7 +111,7 @@ output "DP-2" {
 // https://niri-wm.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 16
+    gaps 0
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -317,9 +317,12 @@ animations {
 // by setting an empty default-column-width.
 
 window-rule {
+    match is-floating=false
+
     draw-border-with-background true
     geometry-corner-radius 0
     clip-to-geometry true
+    tiled-state true
 }
 
 window-rule {

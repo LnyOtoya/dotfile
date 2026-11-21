@@ -1,0 +1,13 @@
+[Unit]
+Description=Waybar Top
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/waybar -c %h/.config/waybar/top.jsonc -s %h/.config/waybar/top.css
+ExecReload=kill -SIGUSR2 $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

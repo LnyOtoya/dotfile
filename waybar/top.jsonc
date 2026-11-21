@@ -1,0 +1,54 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 38,
+  "margin": 0,
+  "spacing": 8,
+  "exclusive": true,
+  "reload_style_on_change": true,
+
+  "modules-left": ["niri/window"],
+  "modules-center": [],
+  "modules-right": ["mpris", "custom/recording", "clock#date", "clock#time"],
+
+  "niri/window": {
+    "format": "{title} - {app_id}",
+    "max-length": 100,
+    "expand": true,
+    "tooltip": false
+  },
+
+  "mpris": {
+    "format": "{status_icon} {title} - {artist}",
+    "format-paused": "{status_icon} {title} - {artist}",
+    "status-icons": {
+      "playing": "Ⅱ",
+      "paused": "▶"
+    },
+    "player-icons": {},
+    "max-length": 55,
+    "tooltip-format": "{player}\\n{title}\\n{artist}\\n{album}",
+    "tooltip": true,
+    "hide-on-paused": false,
+    "interval": 0.5
+  },
+
+  "custom/recording": {
+    "exec": "$HOME/.config/waybar/scripts/recording.sh",
+    "return-type": "json",
+    "interval": 2,
+    "format": "{}",
+    "hide-empty-text": true,
+    "tooltip": false
+  },
+
+  "clock#time": {
+    "format": "{:%H:%M}",
+    "tooltip": false
+  },
+
+  "clock#date": {
+    "format": "{:%Y-%m-%d}",
+    "tooltip": false
+  }
+}

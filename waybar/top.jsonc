@@ -19,18 +19,18 @@
   },
 
   "mpris": {
-    "format": "{status_icon} {title} - {artist}",
-    "format-paused": "{status_icon} {title} - {artist}",
-    "status-icons": {
-      "playing": "Ⅱ",
-      "paused": "▶"
-    },
-    "player-icons": {},
-    "max-length": 55,
-    "tooltip-format": "{player}\\n{title}\\n{artist}\\n{album}",
-    "tooltip": true,
-    "hide-on-paused": false,
-    "interval": 0.5
+      "format": "{status_icon} {title}",
+      "format-paused": "{status_icon} {title}",
+      "title-len": 40,
+      "status-icons": {
+          "playing": "",
+          "paused": "",
+          "stopped": ""
+      },
+      "on-click": "playerctl play-pause",
+      "on-click-right": "playerctl next",
+      "tooltip-format": "{title}",
+      "ignore-players": ["playerctl"]
   },
 
   "custom/recording": {

@@ -18,15 +18,15 @@
   },
 
   "custom/volume": {
-    "exec": "$HOME/.config/waybar/scripts/volume.sh",
-    "return-type": "json",
-    "interval": 1,
-    "format": "{}",
-    "escape": false,
-    "tooltip": true,
-    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+",
-    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"
+      "exec": "$HOME/.config/waybar/scripts/volume.sh",
+      "return-type": "json",
+      "interval": 1,
+      "format": "{}",
+      "escape": false,
+      "tooltip": true,
+      "on-click": "pavucontrol --tab=3",
+      "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+",
+      "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"
   },
 
   "network": {

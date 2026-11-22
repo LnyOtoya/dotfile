@@ -13,3 +13,7 @@ post_hook = "/home/otoya/.config/matugen/update-accent.sh"
 [templates.fuzzel]
 input_path = "~/.config/matugen/templates/fuzzel-colors.ini"
 output_path = "~/.config/fuzzel/colors.ini"
+
+[templates.alacritty]
+input_path = "~/.config/matugen/templates/alacritty.toml"
+output_path = "~/.config/alacritty/colors.toml"

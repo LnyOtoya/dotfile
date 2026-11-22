@@ -5,7 +5,7 @@
 [general]
 # 开启配置自动重载（修改保存后无需重启终端，立即生效）
 live_config_reload = true
-
+import = ["colors.toml"]
 [window]
 # 窗口初始大小（列数和行数，0 表示使用系统默认）
 dimensions = { columns = 100, lines = 30 }
